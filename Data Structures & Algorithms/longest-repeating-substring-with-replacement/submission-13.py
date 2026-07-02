@@ -1,0 +1,15 @@
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        seen = {}
+        maxLen, l = 0, 0
+        for r in range(len(s)):
+            seen[s[r]] = seen.get(s[r], 0) + 1
+            while seen and ((r - l + 1) - max(seen.values())) > k:
+                seen[s[l]] -= 1
+                l += 1
+            
+            maxLen = max(maxLen, (r - l + 1))
+
+            
+        return maxLen
+        
